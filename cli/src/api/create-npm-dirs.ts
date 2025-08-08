@@ -142,15 +142,15 @@ export async function createNpmDirs(userOptions: CreateNpmDirsOptions) {
       JSON.stringify(scopedPackageJson, null, 2) + '\n',
     )
     const targetReadme = join(targetDir, 'README.md')
-    await writeFileAsync(targetReadme, readme(packageName, target))
+    await writeFileAsync(targetReadme, readme(binaryName, target))
 
     debug.info(`${packageName} -${target.platformArchABI} created`)
   }
 }
 
-function readme(packageName: string, target: Target) {
-  return `# \`${packageName}-${target.platformArchABI}\`
+function readme(binaryName: string, target: Target) {
+  return `# \`${binaryName}-${target.platformArchABI}\`
 
-This is the **${target.triple}** binary for \`${packageName}\`
+This is the **${target.triple}** binary for \`${binaryName}\`
 `
 }
